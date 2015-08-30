@@ -13,6 +13,12 @@
 - 日付をつける
 - localStorage を用いた保管
 
+## インストール
+[Release](https://github.com/zaftzaft/cbsnpi/releases)
+
 ## 動作確認
 - Windows7 64bit
 - Arch Linux 64bit
+
+## ライセンス
+MIT
