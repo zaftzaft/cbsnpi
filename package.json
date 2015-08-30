@@ -1,0 +1,31 @@
+{
+  "name": "cbsnpi",
+  "version": "0.0.1",
+  "description": "watch clipboard",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "@zaftzaft",
+  "license": "MIT",
+  "devDependencies": {
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.9.3",
+    "gulp": "^3.9.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-stylus": "^2.0.6",
+    "gulp-uglify": "^1.4.0",
+    "gulp-watch": "^4.3.5",
+    "gulp-webpack": "^1.5.0",
+    "jade": "^1.11.0",
+    "jade-loader": "^0.7.1",
+    "json-loader": "^0.5.2",
+    "lodash": "^3.10.1",
+    "webpack": "^1.12.0"
+  },
+  "dependencies": {
+    "request": "^2.61.0",
+    "vue": "^0.12.12"
+  }
+}

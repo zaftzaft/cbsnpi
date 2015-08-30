@@ -1,0 +1,9 @@
+.output {
+  line-height: 1.5;
+  padding: 8px;
+  outline: 0;
+  width: 80%;
+  margin: 8px auto;
+  display: block;
+  height: 400px;
+}

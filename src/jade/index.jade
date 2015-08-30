@@ -1,0 +1,30 @@
+doctype
+html
+  head
+    meta(charset="utf-8")
+    title クリップボード監視先輩
+    link(rel="stylesheet", href="style.css")
+  body
+    #content
+      input.switch(
+        type="button"
+        v-attr="value: timer ? '無効にする' : '有効にする'"
+        v-on="click: toggle")
+
+      input(type="checkbox" v-model="date")
+      | 日付を追加
+
+      input(type="checkbox" v-model="order")
+      | 上に追加
+
+      input(type="checkbox" v-model="references")
+      | 参考文献モード
+      a(v-on="click: refHelp" href="#") ?
+      textarea.output(v-attr="value: text")
+      input(
+        type="button"
+        value="削除"
+        v-on="click: text = ''"
+        )
+
+    script(src="./bundle.js")
