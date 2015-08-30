@@ -4,7 +4,7 @@
 クリップボードを監視してテキストエリアに出すやつです。
 
 ## デモ
-![screenshot](https://raw.githubusercontent.com/zaftzaft/cbsnpi/master/screenshot/ss.png)
+![screenshot](https://raw.githubusercontent.com/zaftzaft/cbsnpi/master/screenshot/ss.gif)
 
 ## 機能
 - クリップボードの監視
