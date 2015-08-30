@@ -12,3 +12,7 @@
   URL をコピーした際に、タイトルを取得
 - 日付をつける
 - localStorage を用いた保管
+
+## 動作確認
+- Windows7 64bit
+- Arch Linux 64bit
