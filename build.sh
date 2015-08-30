@@ -1,24 +1,33 @@
+version="0.0.1"
+releaseDir=release/v${version}
+
 # Clean
 if [ -e ./build ]; then
   rm -r ./build
 fi
 
-if [ -d ./release ]; then
-  rm -r ./release
+if [ ! -d ./release ]; then
+  mkdir release
 fi
-mkdir release
+
+if [ -d $releaseDir ]; then
+  rm -r $releaseDir
+fi
+mkdir $releaseDir
 
 gulp build
 cp package.json ./build/
 cd build
 electron-packager ./ cbsnpi \
-  --platform=win32,linux \
+  --platform=win32,linux,darwin \
   --arch=x64 \
-  --version=0.30.6 \
+  --version=0.31.1 \
   --asar
 
 #tar -czvf ../release/linux-x64.tar.gz ./cbsnpi-linux-x64
 echo "compress bz2"
-tar -cjvf ../release/linux-x64.tar.bz2 ./cbsnpi-linux-x64
-echo "compress zip"
-zip -r ../release/win-x64.zip ./cbsnpi-win32-x64/*
+tar -cjvf ../${releaseDir}/cbsnpi-v${version}-linux-x64.tar.bz2 ./cbsnpi-linux-x64
+echo "compress zip (win32)"
+zip -r ../${releaseDir}/cbsnpi-v${version}-win-x64.zip ./cbsnpi-win32-x64/*
+echo "compress zip (darwin)"
+zip -r ../${releaseDir}/cbsnpi-v${version}-darwin-x64.zip ./cbsnpi-darwin-x64/*
