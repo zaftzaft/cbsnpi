@@ -1,7 +1,7 @@
-Vue = require "vue"
-getTitle = require "./gettitle.coffee"
-getDate = require "./getdate.coffee"
 clipboard = require "clipboard"
+Vue = require "vue"
+getDate = require "./getdate.coffee"
+getTitle = require "./webview-title.coffee"
 
 contentVM = new Vue
   el: "#content"
@@ -49,8 +49,8 @@ contentVM = new Vue
         if @prev isnt line
 
           if /^https?:\/\//.test(line) and @references
-            getTitle line, (err, title) =>
-              @add if err then line else "#{title}, #{line}"
+            getTitle line, (title) =>
+              @add "#{title}, #{line}"
 
           else
             @add line
