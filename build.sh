@@ -1,4 +1,4 @@
-version="0.0.1"
+version="0.0.2"
 releaseDir=release/v${version}
 
 # Clean
@@ -16,12 +16,12 @@ fi
 mkdir $releaseDir
 
 gulp build
-cp package.json ./build/
+cp package.json ./build/source/
 cd build
-electron-packager ./ cbsnpi \
+electron-packager ./source cbsnpi \
   --platform=win32,linux,darwin \
   --arch=x64 \
-  --version=0.31.1 \
+  --version=0.31.2 \
   --asar
 
 #tar -czvf ../release/linux-x64.tar.gz ./cbsnpi-linux-x64

@@ -4,6 +4,8 @@ _ = require "lodash"
 webpackConfig = require "./webpack.config.coffee"
 webpackProductConfig = _.extend {}, webpackConfig, webpackConfig.__product
 
+buildDest = "./build/source/dist"
+
 
 gulp.task "webpack", ->
   gulp
@@ -43,24 +45,24 @@ gulp.task "build-webpack", ->
   gulp
     .src "./src"
     .pipe $.webpack webpackProductConfig
-    .pipe gulp.dest "./build/dist"
+    .pipe gulp.dest buildDest
 
 gulp.task "build-stylus", ->
   gulp
     .src "./src/stylus/style.styl"
     .pipe $.stylus
       compress: true
-    .pipe gulp.dest "./build/dist"
+    .pipe gulp.dest buildDest
 
 gulp.task "build-jade", ->
   gulp
     .src "./dist/index.html"
-    .pipe gulp.dest "./build/dist"
+    .pipe gulp.dest buildDest
 
 gulp.task "build-main", ->
   gulp
     .src "./main.js"
     .pipe $.uglify()
-    .pipe gulp.dest "./build"
+    .pipe gulp.dest "./build/source"
 
 gulp.task "build", ["build-webpack", "build-stylus", "build-jade", "build-main"]
