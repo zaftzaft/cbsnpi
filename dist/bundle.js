@@ -65,6 +65,21 @@
 	  el: "#content",
 	  data: {
 	    interval: 1000,
+	    intervalOptions: [
+	      {
+	        text: "10秒",
+	        value: 10000
+	      }, {
+	        text: "1秒",
+	        value: 1000
+	      }, {
+	        text: "100ms",
+	        value: 100
+	      }, {
+	        text: "10ms",
+	        value: 10
+	      }
+	    ],
 	    prev: "",
 	    text: "",
 	    timer: null,
@@ -116,9 +131,14 @@
 	      }
 	    },
 	    enable: function() {
-	      return this.timer = setInterval((function(_this) {
+	      var timer;
+	      this.timer = true;
+	      return (timer = (function(_this) {
 	        return function() {
 	          var line;
+	          if (!_this.timer) {
+	            return;
+	          }
 	          line = clipboard.readText();
 	          if (_this.prev !== line) {
 	            if (/^https?:\/\//.test(line) && _this.references) {
@@ -129,14 +149,12 @@
 	              _this.add(line);
 	            }
 	          }
-	          return _this.prev = line;
+	          _this.prev = line;
+	          return setTimeout(timer, _this.interval);
 	        };
-	      })(this), this.interval);
+	      })(this))();
 	    },
 	    disable: function() {
-	      if (this.timer) {
-	        clearInterval(this.timer);
-	      }
 	      return this.timer = null;
 	    },
 	    toggle: function() {
@@ -10182,6 +10200,8 @@
 	module.exports = function(url, callback) {
 	  var fn;
 	  fn = function(e) {
+	    $webview.stop();
+	    $webview.clearHistory();
 	    callback(e.title);
 	    return $webview.removeEventListener("page-title-set", fn);
 	  };

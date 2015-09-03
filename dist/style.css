@@ -1,4 +1,11 @@
+body {
+  font-family: Meiryo;
+}
+#content {
+  font-size: 14px;
+}
 .output {
+  font-family: Meiryo;
   line-height: 1.5;
   padding: 8px;
   outline: 0;
