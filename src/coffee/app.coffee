@@ -8,6 +8,12 @@ contentVM = new Vue
 
   data:
     interval: 1000
+    intervalOptions: [
+      {text: "10秒", value: 10000}
+      {text: "1秒", value: 1000}
+      {text: "100ms", value: 100}
+      {text: "10ms", value: 10}
+    ]
     prev: ""
     text: ""
     timer: null
@@ -43,7 +49,9 @@ contentVM = new Vue
         @text += @format text
 
     enable: ->
-      @timer = setInterval =>
+      @timer = true
+      do timer = () =>
+        return unless @timer
         line = clipboard.readText()
 
         if @prev isnt line
@@ -56,10 +64,9 @@ contentVM = new Vue
             @add line
 
         @prev = line
-      , @interval
+        setTimeout timer, @interval
 
     disable: ->
-      clearInterval @timer if @timer
       @timer = null
 
     toggle: ->

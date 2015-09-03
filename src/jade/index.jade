@@ -20,6 +20,10 @@ html
       input(type="checkbox" v-model="references")
       | 参考文献モード
       a(v-on="click: refHelp" href="#") ?
+
+      |  監視間隔
+      select(v-model="interval" options="intervalOptions")
+
       textarea.output(v-attr="value: text")
       input(
         type="button"
